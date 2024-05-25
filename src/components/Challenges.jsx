@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+
 import { ChallengesContext } from "../store/challenges-context.jsx";
 import ChallengeItem from "./ChallengeItem.jsx";
 import ChallengeTabs from "./ChallengeTabs.jsx";
@@ -40,7 +41,7 @@ export default function Challenges() {
         onSelectType={handleSelectType}
         selectedType={selectedType}
       >
-        <AnimatePresence mode="sync">
+        <AnimatePresence mode="wait">
           {displayedChallenges.length > 0 && (
             <motion.ol
               key="list"
@@ -59,6 +60,7 @@ export default function Challenges() {
               </AnimatePresence>
             </motion.ol>
           )}
+
           {displayedChallenges.length === 0 && (
             <motion.p
               key="fallback"
